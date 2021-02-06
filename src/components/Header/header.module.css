@@ -1,0 +1,9 @@
+.container {
+  background-color: chartreuse;
+}
+
+.header {
+  max-width: 768px;
+  margin: 0 auto;
+  display: flex;
+}
