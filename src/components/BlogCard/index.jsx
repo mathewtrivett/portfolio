@@ -2,23 +2,33 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styles from './blogCard.module.css';
 
-const ExternalLink = ({node}) => {
-  return <a href={node.frontmatter.slug}><h3 className={styles.card__title}>{node.frontmatter.title}</h3></a>;
+const ExternalLink = ({node, children, className}) => {
+  return <a href={node.frontmatter.slug} className={className}>{children}</a>;
 }
 
-const InternalLink = ({node}) => {
-  return <Link to={node.frontmatter.slug}><h3 className={styles.card__title}>{node.frontmatter.title}</h3></Link>;
+const InternalLink = ({node, children, className}) => {
+  return <Link to={node.frontmatter.slug} className={className}>{children}</Link>;
 }
 
-const CardLink = ({node}) => {
-  return node.frontmatter.external ? <ExternalLink node={node} /> : <InternalLink node={node} />
+const CardLink = ({node, children, className}) => {
+  return node.frontmatter.external ? <ExternalLink node={node} className={className}>{children}</ExternalLink> : <InternalLink node={node} className={className}>{children}</InternalLink>
 }
 
 const BlogCard = ({ node }) => {
+  const cta = node.frontmatter.cta ? node.frontmatter.cta : 'Continue reading';
+
   return (
     <article className={styles.card}>
-      <CardLink node={node}/>
-      <span>{node.frontmatter.date}</span>
+      <span className={styles.card__date}><time>{node.frontmatter.date}</time></span>
+      <div className={styles.card__body}>
+      <h3 className={styles.card__title}>
+        <CardLink node={node} className={styles.card__link}>
+          {node.frontmatter.title}
+        </CardLink>
+      </h3>
+        <p className={styles.card__excerpt}>{node.frontmatter.excerpt}</p>
+        <CardLink node={node} className={styles.card__cta}>{cta}</CardLink>
+      </div>
     </article>
   )
 }
