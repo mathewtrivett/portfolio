@@ -19,12 +19,12 @@ export default function Header() {
     <div className={styles.container}>
       <header className={styles.header}>
         <nav className={styles.navigation} aria-label='main'>
-          <Link to='/' className={styles.menu__brand}><h1>{site.siteMetadata.title}</h1></Link>
+          <h1 className={styles.menu__brand}><Link to='/' >{site.siteMetadata.title}</Link></h1>
           <div className={styles.menu}>
-          <Link to='/about' className={styles.menu__item}>About</Link>
-          <Link to='/now' className={styles.menu__item}>Now</Link>
-          <Link to='/blog' className={styles.menu__item}>Blog</Link>
-          <Link to='/projects' className={styles.menu__item}>Projects</Link>
+            <Link to='/about' className={styles.menu__item}>About</Link>
+            <Link to='/now' className={styles.menu__item}>Now</Link>
+            <Link to='/blog' className={styles.menu__item}>Blog</Link>
+            <Link to='/projects' className={styles.menu__item}>Projects</Link>
           </div>
         </nav>
       </header>

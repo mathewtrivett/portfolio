@@ -4,6 +4,7 @@
 
 .header {
   max-width: 768px;
+  height: 4rem;
   margin: 0 auto;
   display: flex;
 }
@@ -15,25 +16,30 @@
 
 .menu__brand {
   border: none;
+  margin: 0;
+  margin-left: -0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.menu__brand h1 {
+.menu__brand a {
   border: none;
-  margin: 0;
-  padding: 0.5rem;
   font-size: 1.25rem;
   font-weight: 700;
+  padding: 0.5rem;
 }
 
-.menu__brand:focus h1,
-.menu__brand:hover h1,
-.menu__brand:active h1 {
+.menu__brand a:focus,
+.menu__brand a:hover,
+.menu__brand a:active {
   color: var(--white);
   border-bottom: 2px solid orangered;
 }
 
 .menu__item {
+  margin-left: -0.5rem;
+  margin-right: 0.5rem;
   padding: 0.5rem;
+  font-weight: 400;
   border: none;
 }
 
