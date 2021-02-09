@@ -2,16 +2,19 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+import MainLayout from '../layouts/MainLayout';
 import SEO from '../components/SEO';
 
 export default function BlogTemplate({data}) {
   return (
-    <>
-    <SEO title={data.mdx.frontmatter.title} />
-    <MDXRenderer>
-      {data.mdx.body}
-    </MDXRenderer>
-    </>
+    <MainLayout>
+      <SEO title={data.mdx.frontmatter.title} />
+      <h2>{data.mdx.frontmatter.title}</h2>
+      <span>{data.mdx.frontmatter.date}</span>
+      <MDXRenderer>
+        {data.mdx.body}
+      </MDXRenderer>
+    </MainLayout>
   )
 }
 
@@ -34,6 +37,9 @@ export const pageQuery = graphql`
       timeToRead
       frontmatter {
         title
+        slug
+        date(formatString: "D MMMM yyyy")
+        external
       }
     }
 

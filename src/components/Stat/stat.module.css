@@ -1,0 +1,20 @@
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat__pre {
+  color: var(--mid-grey);
+}
+
+.stat__number {
+  display: inline-block;
+  font-size: 4rem;
+  line-height: 2rem;
+}
+
+.stat__post {
+  color: var(--mid-grey);
+}

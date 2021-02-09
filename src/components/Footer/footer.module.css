@@ -1,4 +1,33 @@
 .footer {
-  background-color: white;
-  min-height: 50%;
+  background-color: var(--white);
+  flex-shrink: 0;
+  padding: var(--gutter);
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--md);
+  margin: 0 auto;
+}
+
+.footer__item {
+  padding: 0.5rem 0;
+  border: none;
+}
+
+.footer__item:focus,
+.footer__item:hover,
+.footer__item:active {
+  border-bottom: 2px solid orangered;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__nav {
+    flex-direction: row;
+  }
+
+  .footer__item {
+    padding: 0.8rem;
+  }
 }
