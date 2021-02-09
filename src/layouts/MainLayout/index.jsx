@@ -8,14 +8,16 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import styles from './mainLayout.module.css';
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const MainLayout = ({ children }) => {
   return (
-    <div>
+    <div className={styles.layout}>
       <Header />
-      <main>{children}</main>
+      <main className={styles.container}>{children}</main>
       <Footer />
     </div>
   )
