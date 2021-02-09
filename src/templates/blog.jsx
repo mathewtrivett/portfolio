@@ -6,10 +6,11 @@ import MainLayout from '../layouts/MainLayout';
 import SEO from '../components/SEO';
 
 export default function BlogTemplate({data}) {
+  const title = data.mdx.frontmatter.title;
   return (
     <MainLayout>
       <SEO title={data.mdx.frontmatter.title} />
-      <h2>{data.mdx.frontmatter.title}</h2>
+      {title && <h2>{title}</h2>}
       <span>{data.mdx.frontmatter.date}</span>
       <MDXRenderer>
         {data.mdx.body}
@@ -40,6 +41,7 @@ export const pageQuery = graphql`
         slug
         date(formatString: "D MMMM yyyy")
         external
+        excerpt
       }
     }
 

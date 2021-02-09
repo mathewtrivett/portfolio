@@ -33,6 +33,8 @@ query BlogPosts {
         slug
         date(formatString: "D MMMM yyyy")
         external
+        excerpt
+        cta
       }
       slug
       excerpt
