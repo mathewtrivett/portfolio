@@ -1,0 +1,14 @@
+.blog__header {
+  margin-bottom: 3rem;
+}
+
+.blog__title {
+  font-size: 2rem;
+  border: none;
+}
+
+@media screen and (min-width: 768px) {
+  .blog__title {
+    font-size: 2.25rem;
+  }
+}
