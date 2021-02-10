@@ -2,13 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import MainLayout from '../layouts/MainLayout';
-
 import BlogCard from '../components/BlogCard';
+import styles from '../templates/blog.module.css';
 
 export default function BlogIndex({ data } ) {
   return (
     <MainLayout>
-      <h2>Blog</h2>
+      <h2 className={styles.blog__title}>Blog</h2>
       {data.allMdx.nodes.map(node => {
         return <BlogCard key={node.id} node={node} />
       })}

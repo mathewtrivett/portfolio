@@ -33,3 +33,9 @@ a:active {
   color: var(--white);
   outline: none;
 }
+
+.active {
+  background-color: var(--primary);
+  color: var(--white);
+  border-bottom: 2px solid orangered;
+}
