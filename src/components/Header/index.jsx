@@ -21,7 +21,6 @@ export default function Header() {
         <nav className={styles.navigation} aria-label='main'>
           <h1 className={styles.menu__brand}><Link to='/' activeClassName="active">{site.siteMetadata.title}</Link></h1>
           <div className={styles.menu}>
-            <Link to='/about' className={styles.menu__item} partiallyActive={true} activeClassName="active"> About</Link>
             <Link to='/now' className={styles.menu__item} partiallyActive={true} activeClassName="active">Now</Link>
             <Link to='/blog' className={styles.menu__item} partiallyActive={true} activeClassName="active">Blog</Link>
           </div>
