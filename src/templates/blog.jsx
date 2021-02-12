@@ -4,17 +4,19 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import MainLayout from '../layouts/MainLayout';
 import SEO from '../components/SEO';
+import TagLinks from '../components/TagLinks';
 
 import styles from './blog.module.css';
 
-export default function BlogTemplate({data}) {
+export default function BlogTemplate({ data }) {
   const title = data.mdx.frontmatter.title;
   return (
     <MainLayout>
-      <SEO title={data.mdx.frontmatter.title} description={data.mdx.frontmatter.excerpt} />
+      <SEO title={title} description={data.mdx.frontmatter.excerpt} />
       {title && <div className={styles.blog__header}>
         <h2 className={styles.blog__title}>{title}</h2>
         <span>{data.mdx.frontmatter.date}</span>
+        {data.mdx.frontmatter.tags && <TagLinks tags={data.mdx.frontmatter.tags}/>}
       </div>}
       <MDXRenderer>
         {data.mdx.body}
@@ -46,6 +48,7 @@ export const pageQuery = graphql`
         date(formatString: "D MMMM yyyy")
         external
         excerpt
+        tags
       }
     }
 
@@ -53,6 +56,7 @@ export const pageQuery = graphql`
       fields {
         slug
       }
+
       frontmatter {
         title
       }

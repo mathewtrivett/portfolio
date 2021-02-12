@@ -1,0 +1,14 @@
+.tagLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+  .tagLinks {
+    flex-direction: row;
+  }
+
+  .tagLinks__item {
+    margin-right: 0.75rem;
+  }
+}
