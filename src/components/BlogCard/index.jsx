@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
+
 import styles from './blogCard.module.css';
 
 const ExternalLink = ({node, children, className}) => {
@@ -19,7 +20,9 @@ const BlogCard = ({ node }) => {
 
   return (
     <article className={styles.card}>
+      <div>
       <span className={styles.card__date}><time>{node.frontmatter.date}</time></span>
+      </div>
       <div className={styles.card__body}>
       <h3 className={styles.card__title}>
         <CardLink node={node} className={styles.card__link}>

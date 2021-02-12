@@ -7,7 +7,8 @@
 // You can delete this file if you're not using it
 
 const path = require('path');
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
+const { kebabCase } = require('./src/utils/helpers');
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -27,18 +28,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const blogTemplate = path.resolve(`./src/templates/blog.jsx`);
+  const tagTemplate = path.resolve(`./src/templates/tag.jsx`);
 
   const result = await graphql(
     `
     {
-      allMdx(
-        limit: 1000
-      ) {
+      posts: allMdx(limit: 1000) {
         nodes {
           id
           fields {
             slug
           }
+        }
+      }
+      tags: allMdx(limit: 1000) {
+        group(field: frontmatter___tags) {
+          fieldValue
         }
       }
     }
@@ -53,7 +58,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const posts = result.data.allMdx.nodes;
+  const posts = result.data.posts.nodes;
+  const tags = result.data.tags.group;
 
   if(posts.length > 0) {
     posts.forEach((post, index) => {
@@ -68,6 +74,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId
+        }
+      })
+    })
+  }
+
+  if(tags.length > 0) {
+    tags.forEach((tag, index)=> {
+      createPage({
+        path: `/tags/${kebabCase(tag.fieldValue)}`,
+        component: tagTemplate,
+        context: {
+          tag: tag.fieldValue
         }
       })
     })
